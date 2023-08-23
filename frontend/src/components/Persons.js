@@ -1,12 +1,14 @@
-import Person from './Person'
-
-const Persons = ({ persons, filterName, deleteContact }) => {
+const Persons = ({ persons, removePerson }) => {
     return (
         <div>
             {persons.map(person =>
-                <Person key={person.name} name={person.name} 
-                number={person.number} deleteContact={() => deleteContact(person.id, person.name)}/>
-            ).filter(person => person.key.toLowerCase().includes(filterName.toLocaleLowerCase()))}
+                <p key={person.id}>
+                    {person.name} {person.number}
+                    <button onClick={() => removePerson(person)}>
+                        delete
+                    </button>
+                </p>
+            )}
         </div>
     )
 }
